@@ -16,7 +16,7 @@ function omniauth_profile_modules() {
     'openid_provider', 'openid_provider_ax', 'openid_provider_sso', 'openid_profile',
     'openid_cp_field', 'xrds_simple',
     // Contrib
-    'features','content', 'text', 'content_profile', 'content_profile_registration',
+    'features','content', 'text', 'content_profile', 'content_profile_registration', 'auto_nodetitles',
     );
 }
 
