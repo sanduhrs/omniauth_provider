@@ -117,8 +117,12 @@ function omniauth_profile_tasks(&$task, $url) {
     'http://axschema.org/contact/email' => 'mail',
   ));
   variable_set('openid_cp_field_map_profile', array(
-    'http://axschema.org/namePerson/first' => 'field_vorname',
-    'http://axschema.org/namePerson/last' => 'field_nachname',
+    'http://axschema.org/namePerson/prefix' => 'field_name_person_prefix',
+    'http://axschema.org/namePerson/first' => 'field_name_person_first',
+    'http://axschema.org/namePerson/last' => 'field_name_person_last',
+    'http://axschema.org/birthDate' => 'field_birth_date',
+    'http://axschema.org/contact/postalCode/home' => 'field_contact_postal_code_home',
+    'http://axschema.org/contact/city/home' => 'field_contact_city_home',
   ));
   variable_set('content_profile_use_profile', 1);
   variable_set('content_profile_profile', array(
