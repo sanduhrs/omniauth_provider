@@ -11,12 +11,13 @@ function omniauth_profile_modules() {
   return array(
     // Drupal core
     'menu', 'dblog',
+    // Contrib
+    'date', 'date_api', 'features','content', 'text',
+    'auto_nodetitle', 'jquery_ui', 'date_popup', 'content_profile', 'content_profile_registration',
     // Omniauth
     'omniauth_provider', 'omniauth_provider_initialize', 'omniauth_access',
     'openid_provider', 'openid_provider_ax', 'openid_provider_sso', 'openid_profile',
     'openid_cp_field', 'xrds_simple',
-    // Contrib
-    'features','content', 'text', 'content_profile', 'content_profile_registration', 'auto_nodetitle',
     );
 }
 
@@ -160,17 +161,12 @@ function omniauth_form_alter(&$form, $form_state, $form_id) {
  * Do some cleanup
  */
 function omniauth_cleanup() {
-  // Rebuild node access database - required after OG installation
-  node_access_rebuild();
 
   // Rebuild node types
   node_types_rebuild();
 
   // Rebuild the menu
   menu_rebuild();
-
-  // Clear drupal message queue for non-warning/errors
-  drupal_get_messages('status', TRUE);
 
   // Clear out caches
   $core = array('cache', 'cache_block', 'cache_filter', 'cache_page');
@@ -182,6 +178,12 @@ function omniauth_cleanup() {
   // Clear out JS and CSS caches
   drupal_clear_css_cache();
   drupal_clear_js_cache();
+
+  // Clear drupal message queue for non-warning/errors
+  drupal_get_messages('status', TRUE);
+
+  // Rebuild node access database - required after OG installation
+  node_access_rebuild();
 
   // Greetings
   watchdog('Omniauth',
