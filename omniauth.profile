@@ -31,7 +31,7 @@ function omniauth_profile_modules() {
  */
 function omniauth_profile_details() {
   return array(
-    'name' => 'Omniauth OpenID-Simple-Sign-On',
+    'name' => 'Omniauth OpenID-Simple-Sign-On Provider',
     'description' => 'Select this profile to enable the Omniauth OpenID-Simple-Sign-On setup.'
   );
 }
