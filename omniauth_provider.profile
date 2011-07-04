@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 /**
  * Return an array of the modules to be enabled when this profile is installed.
@@ -7,9 +6,8 @@
  * @return
  *   An array of modules to enable.
  */
-function omniauth_profile_modules() {
+function omniauth_provider_profile_modules() {
   return array(
-<<<<<<< HEAD
     // Default Drupal modules.
     'menu',
     'dblog', 
@@ -33,22 +31,11 @@ function omniauth_profile_modules() {
     'xrds_simple',
 
     // Omniauth
-    'omniauth_provider',
-    'omniauth_access',
+    'omniauth_provider_core',
     'omniauth_provider_initialize',
+    'omniauth_provider_access',
   );
-=======
-    // Drupal core
-    'menu', 'dblog',
-    // Contrib
-    'date', 'date_api', 'features','content', 'text',
-    'auto_nodetitle', 'jquery_ui', 'date_popup', 'content_profile', 'content_profile_registration',
-    // Omniauth
-    'omniauth_provider', 'omniauth_provider_initialize', 'omniauth_access',
-    'openid_provider', 'openid_provider_ax', 'openid_provider_sso', 'openid_profile',
-    'openid_cp_field', 'xrds_simple',
-    );
->>>>>>> 6e5dcc3209bd35811c678da02fbf3c01e71c71ca
+
 }
 
 /**
@@ -59,12 +46,13 @@ function omniauth_profile_modules() {
  *   and optional 'language' to override the language selection for
  *   language-specific profiles.
  */
-function omniauth_profile_details() {
+function omniauth_provider_profile_details() {
   return array(
-    'name' => 'Omniauth OpenID-Simple-Sign-On Provider',
-    'description' => 'Select this profile to enable the Omniauth OpenID-Simple-Sign-On setup.'
+    'name' => 'Omniauth OpenID Single Sign On Provider',
+    'description' => 'Select this profile to enable the omniauth OpenID-Simple-Sign-On setup.'
   );
 }
+
 
 /**
  * Return a list of tasks that this profile supports.
@@ -196,6 +184,7 @@ function system_form_install_configure_form_alter(&$form, $form_state) {
       '#required' => TRUE,
     );
   }
+}
 
 /**
  * Do some cleanup
