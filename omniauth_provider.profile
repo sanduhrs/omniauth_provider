@@ -9,6 +9,35 @@
  */
 function omniauth_profile_modules() {
   return array(
+<<<<<<< HEAD
+    // Default Drupal modules.
+    'menu',
+    'dblog', 
+
+    // Contrib
+    'auto_nodetitle',
+    'ctools',
+    'content',
+    'content_profile',
+    'date_api',
+    'date',
+    'date_popup',
+    'features',
+    'jquery_ui',
+    'openid_provider',
+    'openid_provider_ax',
+    'openid_sso_provider',
+    'openid_profile',
+    'openid_cp_field',
+    'text',
+    'xrds_simple',
+
+    // Omniauth
+    'omniauth_provider',
+    'omniauth_access',
+    'omniauth_provider_initialize',
+  );
+=======
     // Drupal core
     'menu', 'dblog',
     // Contrib
@@ -19,6 +48,7 @@ function omniauth_profile_modules() {
     'openid_provider', 'openid_provider_ax', 'openid_provider_sso', 'openid_profile',
     'openid_cp_field', 'xrds_simple',
     );
+>>>>>>> 6e5dcc3209bd35811c678da02fbf3c01e71c71ca
 }
 
 /**
@@ -145,17 +175,27 @@ function omniauth_profile_tasks(&$task, $url) {
 }
 
 /**
- * Implementation of hook_form_alter().
- *
- * Allows the profile to alter the site-configuration form. This is
- * called through custom invocation, so $form_state is not populated.
+ * Alter the install profile configuration form and provide timezone location options.
  */
-function omniauth_form_alter(&$form, $form_state, $form_id) {
-  if ($form_id == 'install_configure') {
-    // Set default for site name field.
-    $form['site_information']['site_name']['#default_value'] = $_SERVER['SERVER_NAME'];
+function system_form_install_configure_form_alter(&$form, $form_state) {
+  $form['site_information']['site_name']['#default_value'] = $_SERVER['SERVER_NAME'];
+  $form['site_information']['site_mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
+  $form['admin_account']['account']['name']['#default_value'] = 'admin';
+  $form['admin_account']['account']['mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
+
+  // Add timezone options required by date (Taken from Open Atrium)
+  if (function_exists('date_timezone_names') && function_exists('date_timezone_update_site')) {
+    $form['server_settings']['date_default_timezone']['#access'] = FALSE;
+    $form['server_settings']['#element_validate'] = array('date_timezone_update_site');
+    $form['server_settings']['date_default_timezone_name'] = array(
+      '#type' => 'select',
+      '#title' => t('Default time zone'),
+      '#default_value' => NULL,
+      '#options' => date_timezone_names(FALSE, TRUE),
+      '#description' => st('Select the default site time zone. If in doubt, choose the timezone that is closest to your location which has the same rules for daylight saving time.'),
+      '#required' => TRUE,
+    );
   }
-}
 
 /**
  * Do some cleanup
