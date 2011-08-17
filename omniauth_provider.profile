@@ -49,7 +49,7 @@ function omniauth_provider_profile_modules() {
 function omniauth_provider_profile_details() {
   return array(
     'name' => 'Omniauth OpenID Single Sign On Provider',
-    'description' => 'Select this profile to enable the omniauth OpenID-Simple-Sign-On setup.'
+    'description' => 'Select this profile to enable the omniauth OpenID Single Sign-On setup.'
   );
 }
 
@@ -216,7 +216,7 @@ function omniauth_cleanup() {
 
   // Greetings
   watchdog('Omniauth',
-    t('Welcome to Omniauth OpenID-Simple-Sign-On brought to you by !ef_link.',
+    t('Welcome to Omniauth OpenID Single Sign-On brought to you by !ef_link.',
       array(
         '!ef_link' => l('erdfisch', 'http://erdfisch.de'),
       )
