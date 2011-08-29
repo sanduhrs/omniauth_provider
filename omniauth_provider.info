@@ -1,0 +1,36 @@
+name = Omniauth OpenID Single Sign-On provider
+description = Select this profile to enable the omniauth OpenID Single Sign-On setup.
+core = 7.x
+
+// Core modules
+dependencies[] = dblog
+dependencies[] = menu
+dependencies[] = field
+dependencies[] = number
+dependencies[] = list
+dependencies[] = text
+dependencies[] = options
+dependencies[] = toolbar
+
+// Contrib modules
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = openid_ax_api
+dependencies[] = openid_provider
+dependencies[] = openid_provider_ax
+dependencies[] = openid_profile
+dependencies[] = openid_sso_provider
+dependencies[] = xrds_simple
+
+// Features
+dependencies[] = omniauth_provider_core
+// dependencies[] = 'omniauth_provider_initialize',
+// dependencies[] = 'omniauth_provider_access',
+
+files[] = omniauth_provider.profile
+
+
+
+
+
