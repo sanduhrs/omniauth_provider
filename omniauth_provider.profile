@@ -63,7 +63,7 @@ function omniauth_provider_profile_details() {
  *   while the values will be displayed to the user in the installer
  *   task list.
  */
-function omniauth_profile_task_list() {
+function omniauth_provider_profile_task_list() {
 }
 
 /**
@@ -117,7 +117,7 @@ function omniauth_profile_task_list() {
  *   An optional HTML string to display to the user. Only used if you
  *   modify the $task, otherwise discarded.
  */
-function omniauth_profile_tasks(&$task, $url) {
+function omniauth_provider_profile_tasks(&$task, $url) {
 
   // Insert default user-defined node types into the database. For a complete
   // list of available node type attributes, refer to the node type API
@@ -159,7 +159,7 @@ function omniauth_profile_tasks(&$task, $url) {
   variable_set('node_options_profile', array(0 => 'status'));
   variable_set('site_frontpage', 'user');
   // Cleanup
-  omniauth_cleanup();
+  omniauth_provider_cleanup();
 }
 
 /**
@@ -189,7 +189,7 @@ function system_form_install_configure_form_alter(&$form, $form_state) {
 /**
  * Do some cleanup
  */
-function omniauth_cleanup() {
+function omniauth_provider_cleanup() {
 
   // Rebuild node types
   node_types_rebuild();
